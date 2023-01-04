@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Board</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/untitled/css/style.css">
 </head>
 <body>
 <div class=top><h2>게시판</h2></div>
@@ -17,29 +17,32 @@
         <th>내용</th>
         <th>작성자</th>
         <th>작성일</th>
+        <th>삭제</th>
     </tr>
     </thead>
-    <?php
-    $connect = mysqli_connect("localhost", "root", "7pifz9!!", "loginexam") or die("fail");
+    <div class="pagination">
+        <?php
 
-    $sql = "SELECT * FROM post ORDER BY id DESC";
-    $result = mysqli_query($connect, $sql);
 
-    while($row = mysqli_fetch_array($result)){
-        $postId = $row['id'];
+        $connect = mysqli_connect("localhost", "root", "7pifz9!!", "loginexam") or die("fail");
+
+        $sql = "SELECT * FROM post;";
+        $result = mysqli_query($connect, $sql);
+        $post_cnt = mysqli_num_rows($result);
+        $page_cnt = ceil($post_cnt / 10);
         ?>
-        <tbody>
-        <tr>
-            <td><?php echo $row['id'];?></td>
+        <form action="pagingList.php" method="post">
+            <?php
+            for ($page = 1;$page <= $page_cnt; $page++) {
+            echo "<input type='submit' name='pageNum' value='$page'>";
+            //                echo "<div> "  .$page. " </div>";
 
-            <td><a href="/post/update.php?postId=<?php echo $postId;?>"><?php echo $row['title'];?></td></td>
+            }
+            ?>
 
-            <td><?php echo $row['content'];?></td>
-            <td><?php echo $row['nickname'];?></td>
-            <td><?php echo $row['created'];?></td>
-        </tr>
-        </tbody>
-    <?php } ?>
+        </form>
+
+    </div>
 </table>
 </body>
 </html>
