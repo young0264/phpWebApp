@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>Board</title>-->
-<!--    <link rel="stylesheet" href="/untitled/css/style.css">-->
-<!--</head>-->
-<?php
-include('/untitled/fragments/header.html');
-?>
+<head>
+    <meta charset="UTF-8">
+    <title>Board</title>
+    <link rel="stylesheet" href="/untitled/css/style.css">
+</head>
+
 <body>
 <div class=top><h2>게시판</h2></div>
 
