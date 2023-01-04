@@ -8,7 +8,10 @@
 </head>
 <body>
 로그인 완료
-<button id="" onclick="location.href='post/list.php'">post페이지로 이동</button>
+<form method="post" action="post/list.php">
+    <input type="hidden" name="pageNum" value="0">
+    <button type="submit" >post페이지로 이동</button>
+</form>
 
 </body>
 </html>
