@@ -1,26 +1,18 @@
 <?php
 
 $connect = mysqli_connect("localhost", "root", "7pifz9!!", "loginexam") or die("fail");
-//print_r($connect);
-//echo "<h2>$connect</h2>";
-//exit;
 
 
 $nickname=$_POST['nickname'];
 $password=$_POST['password'];
 $email =$_POST ['email'];
 
-//$date = date('Y-m-d H:i:s');
-
 //입력받은 데이터를 DB에 저장
-//$query = "insert into member (nickname, pw, email, permit) values ('$nickname', '$password', '$email', 0)";
 $query = "insert into member (nickname, password, email) values ('$nickname', '$password', '$email')";
 echo "<h2>$query</h2>";
 exit;
 $result = mysqli_query($connect, $query);
 print_r($result);
-//
-//$result = $connect->query($query);
 echo "<h2>result : $result</h2>";
 
 //저장이 됬다면 (result = true) 가입 완료
