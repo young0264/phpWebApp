@@ -64,7 +64,7 @@ if($username && $title && $content){
     ?>
         "<script>
         alert('글쓰기 완료되었습니다.');
-        location.replace("/post/list.php");
+        location.replace("/untitled/post/list.php");
 </script>";
 <?php
 
