@@ -1,18 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Board</title>
-    <link rel="stylesheet" href="/untitled/css/style.css">
-</head>
+
+<?php require_once("../fragments/header.html"); ?>
+
 <body>
 <script type="text/javascript">
     function delete_id(id) {
-        alert(id);
-    }
+        location.replace("../post/delete.php?postId=" + id);}
 </script>
+<script>
+    function post_modify(id){
+        location.replace("../post/update.php?postId=" + id);}
+</script>
+
 <div class=top><h2>게시판</h2></div>
 <button class="no" onclick="window.location.href='write.html'">글쓰기</button>
+<div id="search_box">
+    <form action="../post/search.php" method="get">
+        <select name="category">
+            <option value="nickname">작성자</option>
+            <option value="title">제목</option>
+            <option value="content">내용</option>
+        </select>
+        <input type="text" name="search" size="40" required="required" /> <button>검색</button>
+    </form>
+</div>
 <table class="middle">
     <thead>
     <tr>
@@ -21,57 +33,62 @@
         <th>내용</th>
         <th>작성자</th>
         <th>작성일</th>
+        <th>수정</th>
         <th>삭제</th>
     </tr>
     </thead>
+
     <div class="pagination">
-<?php
+        <?php
         $connect = mysqli_connect("localhost", "root", "7pifz9!!", "loginexam") or die("fail");
         $sql = "select * from post";
         $result = mysqli_query($connect, $sql);
-        $row_cnt = mysqli_fetch_array($result);
         $post_cnt = mysqli_num_rows($result);
         $page_cnt = ceil($post_cnt / 10);
         $pageNum = !empty($_GET['pageNum']) ? $_GET['pageNum'] : 1;
 
         $cnt = ($pageNum - 1) * 10;
 
-        $sql2 = "select * from post 
+        $sql2 = "select * from post
                     order by id desc 
                         limit $cnt, 10";
-
         $res2 = mysqli_query($connect, $sql2);
         while ($row = mysqli_fetch_array($res2)) {
-?>
-                <tbody>
-                <tr>
-                    <td><?=$row['id']?></td>
-                    <td>
-                        <a href="/untitled/post/update.php?postId=<?=$row['id']?>"><?php echo $row['title']; ?>
-                    </td>
-                    <td><?=$row['content']?></td>
-                    <td><?php echo $row['nickname']; ?></td>
-                    <td><?php echo $row['created']; ?></td>
-                    <td>
-                        <button type="button" onclick="delete_id('<?=$row['id']?>')">삭제</button>
-                    </td>
-                </tr>
-                </tbody>
-<?php
-            }
-?>
+            ?>
+            <tbody>
+            <tr>
+                <td><?= $row['id'] ?></td>
+                <td><?php echo $row['title']; ?></td>
+                <td><?= $row['content'] ?></td>
+                <td><?php echo $row['nickname']; ?></td>
+                <td><?php echo $row['created']; ?></td>
+                <!--                    onclick을 통한 삭제와 form submit을 통한 삭제 -->
+                <td>
+                    <button type="button" onclick="post_modify('<?=$row['id']?>')">수정</button>
+                </td>
+                <td>
+                    <button type="button" onclick="delete_id('<?= $row['id'] ?>')">삭제</button>
+                </td>
+            </tr>
+            </tbody>
+            <?php
+        }
+        ?>
     </div>
 </table>
+<div class="pageNum">
+
 <?php
-for ($page = 1;$page <= $page_cnt; $page++) {
+for ($page = 1; $page <= $page_cnt; $page++) {
+//    echo $_SERVER['PHP_SELF']; //untitled/post/list
     $url = sprintf("%s?pageNum=%s",
         $_SERVER['PHP_SELF'],
-        $page
-    );
+        $page);
     ?>
-    <a href='<?=$url?>'>[<?=$page?>]</a>
+            <a href='<?= $url ?>'>[<?= $page ?>]
 <?php
-}
+                }
 ?>
+</div>
 </body>
 </html>

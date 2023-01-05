@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<head>
-    <meta charset="UTF-8">
-    <title>게시판</title>
-
-</head>
+<?php
+require_once("../fragments/header.html");
+?>
 <body>
 
 <?php
@@ -22,21 +20,13 @@
             <input type="hidden" name="postId" value="<?=$postId?>">
 
             <div id="in_title">
-                <textarea name="title" id="utitle" rows="3" cols="40" placeholder="제목" maxlength="100" required>
-                <?php echo $post['title']; ?>
-                </textarea>
+                <textarea name="title" id="utitle" rows="3" cols="40" placeholder="제목" maxlength="100" required><?php echo $post['title']; ?></textarea>
             </div>
-
             <div class="wi_line"></div>
-
             <div id="in_content">
-                <textarea name="content" id="ucontent" rows="10" cols="40" placeholder="내용" required>
-                <?php echo $post['content']; ?>
-                </textarea>
+                <textarea name="content" id="ucontent" rows="10" cols="40" placeholder="내용" required><?php echo $post['content']; ?></textarea>
             </div>
-
             <input type="file" name="SelectFile" />
-
             <div class="bt_se">
                 <button type="submit">글 작성</button>
             </div>

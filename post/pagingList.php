@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Board</title>
-    <link rel="stylesheet" href="/untitled/css/style.css">
-</head>
 
+<?php
+//require_once("../fragments/header.html");
+require_once("../fragments/header.html");
+echo $_SERVER["DOCUMENT_ROOT"];
+echo $_SERVER["REQUEST_URI"];
+?>
 <body>
+<div id="headers"></div>
 <div class=top><h2>게시판</h2></div>
 
 <button class="no" onclick="window.location.href='write.html'">글쓰기</button>
+<button class="no" onclick="window.location.href='../head.php'">테스트링크</button>
 <table class="middle">
     <thead>
     <tr>
