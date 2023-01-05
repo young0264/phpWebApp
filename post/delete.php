@@ -1,7 +1,7 @@
 <?php
 $connect = mysqli_connect("localhost", "root", "7pifz9!!", "loginexam") or die("fail");
 
-$postId = $_POST['postId'];
+$postId = $_GET['postId'];
 $query = "delete from post where id='$postId';";
 
 mysqli_query($connect, $query);
@@ -14,7 +14,8 @@ if (mysqli_query($connect, $query)) {
 }else{
     ?>
     <script type="text/javascript">
-        alert("게시글이 삭제되었습니다.");
+        const postNum = "<?=$postId?>";
+        alert(postNum + "번째 게시글이 삭제되었습니다.");
         location.replace("/untitled/post/list.php");
     </script>
 <?php
