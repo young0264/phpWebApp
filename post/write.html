@@ -11,16 +11,16 @@
   <div id="write_area">
     <form enctype="multipart/form-data" action="write.php" method="post">
       <div id="in_title">
-        <textarea name="title" id="utitle" rows="1" cols="55" placeholder="제목" maxlength="100" required></textarea>
+        <textarea name="title" id="utitle" rows="2" cols="55" placeholder="제목" maxlength="100" required></textarea>
       </div>
 
       <div class="wi_line"></div>
 
       <div id="in_content">
-        <textarea name="content" id="ucontent" placeholder="내용" required></textarea>
+        <textarea name="content" id="ucontent" rows="15" cols="55" placeholder="내용" required></textarea>
       </div>
 
-      <input type="file" name="SelectFile" />
+      <input type="file" name="SelectFile" >
 
       <div class="bt_se">
         <button type="submit">글 작성</button>
