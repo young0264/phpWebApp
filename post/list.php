@@ -8,9 +8,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php require_once("../fragments/header.html"); ?>
+<?php require_once("../fragments/header.html");?>
 
 <body>
+<?php require_once("../fragments/nav.php"); ?>
+
 <script type="text/javascript">
     function delete_id(id) {
         location.replace("../post/delete.php?postId=" + id);
@@ -69,7 +71,7 @@
             <tbody>
             <tr>
                 <td><?= $row['id'] ?></td>
-                <td><?php echo $row['title']; ?></td>
+                <td><a href="../post/detail.php?postId=<?=$row['id']?>">post detail</a> <?php echo $row['title']; ?></td>
                 <td><?= $row['content'] ?></td>
                 <td><?php echo $row['nickname']; ?></td>
                 <td><?php echo $row['created']; ?></td>
