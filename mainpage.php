@@ -9,7 +9,7 @@ if(isset($_COOKIE['id'])){
     ?>
     <script>
         alert("로그인을 해주세요.");
-        location.replace("/login.html");
+        location.replace("/untitled/login.html");
     </script>
     <?php
 }
