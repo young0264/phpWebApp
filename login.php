@@ -7,24 +7,14 @@
  * 아이디와 비밀번호를 받을수 있는 페이지
  */
 $connect = mysqli_connect("localhost", "root", "7pifz9!!", "loginexam") or die("fail");
-//입력 받은 id와 password
 $id = $_POST['nickname'];
 $pw = $_POST['password'];
 $email = $_POST['email'];
-echo "<h2> id,pw : $pw";
-
-
-//아이디가 있는지 검사
 $query = "select * from member where nickname='$id'";
-echo "<h2> login.php query : $query </h2>";
 $result = $connect->query($query);
 
-echo "<h2> pw : $pw";
-
-//db에 아이디가 있다면 비밀번호 검사
 if (mysqli_num_rows($result) == 1) {
     $row = mysqli_fetch_assoc($result);
-    //db에 저장된 password하고 $pw값 비교 , 비밀번호가 맞다면 세션 생성
     if ($row['password'] == $pw) {
 //        $_SESSION['userid'] = $id;
 //        $_SESSION['userpw'] = $pw;
@@ -52,7 +42,6 @@ if (mysqli_num_rows($result) == 1) {
         </script>
         <?php
     }
-
 } else {
     ?>
     <script>
@@ -61,6 +50,4 @@ if (mysqli_num_rows($result) == 1) {
     </script>
     <?php
 }
-
-
 ?>
