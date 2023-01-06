@@ -13,8 +13,7 @@
 <body>
 <?php require_once("../fragments/nav.php"); ?>
 <?php
-require_once("../fragments/dbConnect.php");
-//$connect = mysqli_connect("localhost", "root", "7pifz9!!", "loginexam") or die("fail");
+$connect = mysqli_connect("localhost", "root", "7pifz9!!", "loginexam") or die("fail");
 $postId = $_GET['postId'];
 $query = "select * from post where id=$postId";
 $res = mysqli_query($connect, $query);
@@ -33,10 +32,15 @@ $res2 = mysqli_query($connect, $comment_sql);
     <div class="container">
         <div class="row clearfix">
             <div class="col-lg-8 col-md-12 left-box">
-                <div class="card single_post">
+                <h3 class="card single_post">
                     <div class="body">
-                        <h2>제목 : <?= $post['title'] ?></h2>
-                        <h2>내용 : <?= $post['content'] ?></div>
+                        <h3>제목 : <?= $post['title'] ?></h3>
+                        <h3>내용 : <?= $post['content'] ?></h3>
+                        <svg data-jdenticon-value="<?=$post['nickname']?>" width="80" height="80">
+                            Fallback text or image for browsers not supporting inline svg.
+                        </svg>
+                        <h3>작성자 : <?= $post['nickname'] ?></h3>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-4 col-md-12 right-box">
@@ -48,22 +52,27 @@ $res2 = mysqli_query($connect, $comment_sql);
                     </div>
                 </div>
             </div>
-            <div class="card">
-                <div class="header">
-                    <h2>댓글</h2>
-                    <a>댓글수 : </a>
-                </div>
-                <div class="body">
-
+        <div class="card">
+            <div class="header">
+                <h2>댓글</h2>
+                <a>댓글수 : </a>
+            </div>
+            <div class="body">
+        <?php
+        while ($comment = mysqli_fetch_array($res2)) {
+        $comment_nickname = $comment['nickname'];
+        $comment_content = $comment['content'];
+        $comment_created = $comment['created'];
+        echo "댓글 정보 : $comment_nickname, $comment_content, $comment_created ";
+        ?>
                     <ul class="comment-reply list-unstyled">
-                        <?php
-                        while ($comment = mysqli_fetch_array($res2)) {
-                            $comment_nickname = $comment['nickname'];
-                            $comment_content = $comment['content'];
-                            $comment_created = $comment['created'];
-                            ?>
+
                             <li class="row clearfix">
-                                <div class="icon-box col-md-2 col-4"></div>
+                                <div class="icon-box col-md-1 col-4">
+                                    <svg data-jdenticon-value="<?=$comment_nickname?>" width="80" height="80">
+                                        Fallback text or image for browsers not supporting inline svg.
+                                    </svg>
+                                </div>
                                 <div class="text-box col-md-10 col-8 p-l-0 p-r0">
                                     <h5><?= $comment_nickname ?></h5>
                                     <p><?= $comment_content ?></p>
@@ -76,7 +85,7 @@ $res2 = mysqli_query($connect, $comment_sql);
                         }
                         ?>
                         <li class="row clearfix">
-                            <div class="icon-box col-md-2 col-4"><img class="img-fluid img-thumbnail"
+                            <div class="icon-box col-md-1 col-4"><img class="img-fluid img-thumbnail"
                                                                       src="https://bootdey.com/img/Content/avatar/avatar3.png"
                                                                       alt="Awesome Image"></div>
                             <div class="text-box col-md-10 col-8 p-l-0 p-r0">
@@ -104,7 +113,7 @@ $res2 = mysqli_query($connect, $comment_sql);
                                 <?php date_default_timezone_set('Asia/Seoul');
                                 $created = date('Y-m-d H:i:s'); ?>
                                 <input type="hidden" name="postId" value="<?= $post['id'] ?>"/>
-                                <input type="hidden" name="nickname" value="<?= $post['nickname'] ?>"/>
+                                <input type="hidden" name="nickname" value="<?= $_COOKIE['id'] ?>"/>
                                 <input type="hidden" name="created" value="<?= $created ?>"/>
                                 <button type="submit" class="btn btn-block btn-primary">등록</button>
                             </div>
