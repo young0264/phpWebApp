@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php require_once("../fragments/header.html");?>
+<?php require_once("../fragments/header.html"); ?>
 
 <body>
 <?php require_once("../fragments/nav.php"); ?>
@@ -18,6 +18,7 @@
         location.replace("../post/delete.php?postId=" + id);
     }
 </script>
+
 <script>
     function post_modify(id) {
         location.replace("../post/update.php?postId=" + id);
@@ -61,35 +62,49 @@
         $pageNum = !empty($_GET['pageNum']) ? $_GET['pageNum'] : 1;
 
         $cnt = ($pageNum - 1) * 10;
-
         $sql2 = "select * from post
                     order by id desc 
                         limit $cnt, 10";
         $res2 = mysqli_query($connect, $sql2);
         while ($row = mysqli_fetch_array($res2)) {
-            ?>
-            <tbody>
-            <tr>
-                <td><?= $row['id'] ?></td>
-                <td><a href="../post/detail.php?postId=<?=$row['id']?>">post detail</a> <?php echo $row['title']; ?></td>
-                <td><?= $row['content'] ?></td>
-                <td><?php echo $row['nickname']; ?></td>
-                <td><?php echo $row['created']; ?></td>
-                <!--                    onclick을 통한 삭제와 form submit을 통한 삭제 -->
-                <td>
-                    <button type="button" onclick="post_modify('<?= $row['id'] ?>')">수정</button>
-                </td>
-                <td>
-                    <button type="button" onclick="delete_id('<?= $row['id'] ?>')">삭제</button>
-                </td>
-                <td>
-                    <a href="../upload/<?= $row['file'] ?>" download><?= $row['file'] ?></a>
-                </td>
-            </tr>
-            </tbody>
-            <?php
-        }
+        $postId = $row['id'];
         ?>
+        <tbody>
+        <tr>
+            <td><?= $row['id'] ?></td>
+            <td><a href="../post/detail.php?postId=<?= $row['id'] ?>">post detail</a> <?php echo $row['title']; ?></td>
+            <td><?= $row['content'] ?></td>
+            <td><?php echo $row['nickname']; ?></td>
+            <td><?php echo $row['created']; ?></td>
+            <!--                    onclick을 통한 삭제와 form submit을 통한 삭제 -->
+            <td>
+                <button type="button" onclick="post_modify('<?= $postId ?>')">수정</button>
+            </td>
+            <td>
+                <button type="button" onclick="delete_id('<?= $postId ?>')">삭제</button>
+            </td>
+            <td>
+                <a href="../upload/<?= $row['file'] ?>" download><?= $row['file'] ?></a>
+                <?php
+                $sql3 = "select * from file 
+                                order by id='<?=$postId?>'";
+                $res3 = mysqli_query($connect, $sql3);
+
+                while ($row2 = mysqli_fetch_array($res3)) {
+                /*                        <a href="../upload/<?= $row2['file'] ?>" download><?= $row2['file'] */ ?><!--</a>-->
+                <?php
+                $file = $row2['name'];
+                ?>
+                <a href="../upload/<?= $file ?>" download><?= $file ?></a>
+                <?php
+                }
+                ?>
+            </td>
+        </tr>
+        </tbody>
+    <?php
+    }
+    ?>
     </div>
 </table>
 <div class="pageNum">

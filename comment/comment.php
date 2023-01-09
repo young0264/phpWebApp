@@ -7,8 +7,8 @@ $content = $_POST['content'];
 $created = $_POST['created'];
 
 if ($postId && $_POST['content']) {
-    $query = "insert into comment(nickname, content, created, post_id) 
-                            values('$nickname','$content', '$created', '$postId')";
+    $query = "insert into post (idx,content, created,nickname) 
+                            values('$postId', '$content', '$created', '$nickname') ";
     mysqli_query($connect, $query);
     ?>
     <script>
@@ -19,5 +19,6 @@ if ($postId && $_POST['content']) {
 } else {
     echo "<script>
             alert('댓글 작성에 실패했습니다.')
-            history.back()</script>";}
+            history.back()</script>";
+}
 ?>
