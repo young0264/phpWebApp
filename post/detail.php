@@ -4,24 +4,19 @@
  * 남의영 (2022-01-05)
  * 게시글들을 보여주는 페이지 입니다
  */
-?>
-<!DOCTYPE html>
-<html lang="en">
-
-<?php require_once("../fragments/header.html"); ?>
-
-<body>
-<?php require_once("../fragments/nav.php"); ?>
-<?php
+require_once("../fragments/header.html");
+require_once("../fragments/nav.php");
 $connect = mysqli_connect("localhost", "root", "7pifz9!!", "loginexam") or die("fail");
 $postId = $_GET['postId'];
 $query = "select * from post where id=$postId";
 $res = mysqli_query($connect, $query);
 $post = mysqli_fetch_array($res);
-
 $comment_sql = "select * from post where idx=$postId order by id desc";
 $res2 = mysqli_query($connect, $comment_sql);
+$file_sql = "select * from file where idx=$postId order by id";
+$file_result = mysqli_query($connect, $file_sql);
 ?>
+<body>
 <form method="post" action="../post/list.php">
     <input type="hidden" name="pageNum" value="0">
     <div class="card">
@@ -34,6 +29,7 @@ $res2 = mysqli_query($connect, $comment_sql);
             <div class="col-lg-8 col-md-12 left-box">
                 <h3 class="card single_post">
                     <div class="body">
+                        <h2>게시글</h2>
                         <h3>제목 : <?= $post['title'] ?></h3>
                         <h3>내용 : <?= $post['content'] ?></h3>
                         <svg data-jdenticon-value="<?= $post['nickname'] ?>" width="80" height="80">
@@ -41,13 +37,18 @@ $res2 = mysqli_query($connect, $comment_sql);
                         </svg>
                         <h3>작성자 : <?= $post['nickname'] ?></h3>
                     </div>
+                </h3>
             </div>
         </div>
         <div class="col-lg-4 col-md-12 right-box">
             <div class="card">
                 <div class="header">
                     <h3>첨부파일</h3>
-                    <a href="../upload/<?= $post['file'] ?>" download><?= $post['file'] ?></a>
+                    <?php
+                    while ($row = mysqli_fetch_array($file_result)) {
+                        ?>
+                        <a href="../upload/<?= $row['name'] ?>" download><?= $row['name'] ?></a>
+                    <?php } ?>
                 </div>
             </div>
         </div>
@@ -64,7 +65,6 @@ $res2 = mysqli_query($connect, $comment_sql);
                 $comment_created = $comment['created_comment'];
                 ?>
                 <ul class="comment-reply list-unstyled">
-
                     <li class="row clearfix">
                         <div class="icon-box col-md-1 col-4">
                             <svg data-jdenticon-value="<?= $comment_nickname ?>" width="40" height="40">
@@ -72,16 +72,14 @@ $res2 = mysqli_query($connect, $comment_sql);
                             </svg>
                         </div>
                         <div class="text-box col-md-10 col-8 p-l-0 p-r0">
-                            <h5><?= $comment_nickname ?></h5>
-                            <p><?= $comment_content ?></p>
+                            <h5>작성자 : <?= $comment_nickname ?></h5>
+                            <p>내용 : <?= $comment_content ?></p>
                             <ul class="list-inline">
                                 <li><a href="javascript:void(0);"><?= $comment_created ?></a></li>
                             </ul>
                         </div>
                     </li>
-                    <?php
-                    }
-                    ?>
+                    <?php } ?>
                     <li class="row clearfix">
                         <div class="icon-box col-md-1 col-4"><img class="img-fluid img-thumbnail"
                                                                   src="https://bootdey.com/img/Content/avatar/avatar3.png"
@@ -121,7 +119,5 @@ $res2 = mysqli_query($connect, $comment_sql);
         </div>
     </div>
 </div>
-</div>
 </body>
-
 </html>
