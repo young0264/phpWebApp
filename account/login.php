@@ -23,16 +23,17 @@ if (mysqli_num_rows($result) == 1) {
 //        $_SESSION['userid'] = $id;
 //        $_SESSION['userpw'] = $pw;
 //        $_SESSION['useremail'] = $email;
-        setcookie('id', $id);
-        setcookie('pw', $pw);
-//        setcookie('email', $email);
+//        setcookie('id', $id,['samesite' => 'None', 'secure' => true]);
+//        setcookie('pw', $pw,['samesite' => 'None', 'secure' => true]);
+        setcookie('id', $id,time() + 3600);
+        setcookie('pw', $pw,time() + 3600);
 
         if (isset($_COOKIE['id'])) {
             ?>
             <script>
 
                 alert("로그인 되었습니다.");
-                location.replace("mainpage.html");
+                location.replace("../main/mainpage.html");
             </script>
             <?php
         } else {
