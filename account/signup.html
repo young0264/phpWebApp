@@ -1,16 +1,64 @@
 <?php include(sprintf("%s/fragments/header.html", $_SERVER['DOCUMENT_ROOT'])); ?>
-<?php include(sprintf("%s/fragments/nav.php", $_SERVER['DOCUMENT_ROOT'])); ?>
-<body>
-<div align="center">
-    <p>회원가입</p>
-    <form method='post' action='/untitled/signup.php'>
-        <p>Id: <input name="nickname" type="text"></p>
-        <p>Pw: <input name="password" type="text"></p>
-        <p>Email: <input name="email" type="email"></p>
-        <p>소갯말: <input name="intro" type="text"></p>
-        <input type="submit" value="회원가입">
-    </form>
-</div>
+<!DOCTYPE>
+
+<html>
+<body class="img js-fullheight" style="background-image: url(../images/mountain.jpg);">
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center mb-5">
+                <h2 class="heading-section">회원가입</h2>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <div class="">
+                    <h3 class="mb-4 text-center">Sign up</h3>
+                    <form method='post' action='/untitled/account/signup.php' >
+                        <div  class="form-group ui-icon-arrow-2-ne-sw" >
+                            <input style="background-color: cornflowerblue" type="text" name="nickname" class="form-control" placeholder="Username" required>
+                        </div>
+                        <div class="form-group">
+                            <input style="background-color: cornflowerblue"  id="password-field" name="password" type="password" class="form-control"
+                                   placeholder="Password" required>
+                            <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                        </div>
+                        <div class="form-group">
+                            <input style="background-color: cornflowerblue"  id="" name="email" type="email" class="form-control"
+                                   placeholder="email" required>
+                            <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                        </div>
+                        <div class="form-group">
+                            <textarea style="background-color: cornflowerblue"  id="" name="intro" type="text" class="form-control"
+                                      placeholder="자기소개" required></textarea>
+                            <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="form-control btn btn-primary submit px-3">회원가입</button>
+                        </div>
+
+                        <div class="form-group d-md-flex">
+                            <div class="w-50">
+                                <label class="checkbox-wrap checkbox-primary">Remember Me
+                                    <input type="checkbox" checked>
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div class="w-50 text-md-right">
+                                <a href="#" style="color: #fff">Forgot Password</a>
+                            </div>
+                        </div>
+                        <div class="w-50 ">
+                            <a href="signup.html" style="color: #fff">회원가입</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 </body>
-<?php include(sprintf("%s/fragments/bottom.html", $_SERVER['DOCUMENT_ROOT'])); ?>
+</html>
 
