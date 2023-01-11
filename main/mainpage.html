@@ -1,48 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
 <?php include(sprintf("%s/fragments/header.html", $_SERVER['DOCUMENT_ROOT'])); ?>
 <?php include(sprintf("%s/fragments/nav.php", $_SERVER['DOCUMENT_ROOT'])); ?>
 
-<body style="background-color: aliceblue ">
-<div style="background-color: aliceblue">
+<head style="background-color: aliceblue">
+</head>
+<body class="container"style="background-color: aliceblue" >
 
-    <div class="form-control" style=" background-color: aliceblue">
-        <div style="margin-left: 300px; margin-top:300px">
+<div class="container" style="background-color: aliceblue">
+    <div class="row about-container">
 
+        <div class="col-lg-6 content order-lg-1 order-2">
+            <h2 class="title">PHP </h2>
+            <h5>
+                PHP
+            </h5>
 
-            <form method="post" action="post/list.php">
-                <input type="hidden" name="pageNum" value="0">
-                <button class="btn-dark" type="submit">post페이지로 이동</button>
-            </form>
-        </div>
-    </div>
-    <!---->
-    <div style="background-color: aliceblue" class="container">
-        <div class="row mt-5 justify-content-center">
-
-            <div class="clo-2">
-                <h5>123</h5>
+            <div class="icon-box" data-aos-delay="200">
+                <div class="icon"><i class="bi bi-card-checklist"></i></div>
+                <h4 class="title"><a>PHP 게시판</a></h4>
+                <p class="description">PHP 게시판</p>
+            </div>
+            <div class="icon-box" data-aos-delay="200">
+                <div class="icon"><i class="bi bi-card-checklist"></i></div>
+                <h4 class="title"><a>PHP 게시판</a></h4>
+                <p class="description">PHP 게시판</p>
             </div>
         </div>
-        <div class="row mt-5 justify-content-center">
-            <div class="clo-8">
-                <h5>456</h5>
-            </div>
-        </div>
-        <div class="row mt-3 justify-content-center">
-            <div class="clo-2">
-                <h5>222</h5>
-            </div>
-        </div>
-        <div class="clo-8">
-            <h5>456</h5>
-            <h5>456</h5>
-            <h5>456</h5>
-            <h5>456</h5>
-            <h5>456</h5>
-            <h5>456</h5>
+
+        <div class="col-lg-4 background order-lg-2"  >
+            <img src="../images/mountain.jpg" width="150%">
         </div>
     </div>
 </div>
+
 </body>
-</html>
+<?php include(sprintf("%s/fragments/bottom.html", $_SERVER['DOCUMENT_ROOT'])); ?>
