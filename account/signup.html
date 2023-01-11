@@ -1,0 +1,23 @@
+<?php include(sprintf("%s/fragments/header.html", $_SERVER['DOCUMENT_ROOT'])); ?>
+
+<!DOCTYPE>
+
+<html>
+<head>
+    <meta charset='utf-8'>
+</head>
+<body>
+
+<div align="center">
+    <p>회원가입</p>
+    <form method='post' action='/untitled/signup.php'>
+        <p>Id: <input name="nickname" type="text"></p>
+        <p>Pw: <input name="password" type="text"></p>
+        <p>Email: <input name="email" type="email"></p>
+        <p>소갯말: <input name="intro" type="text"></p>
+        <input type="submit" value="회원가입">
+    </form>
+</div>
+</body>
+</html>
+
