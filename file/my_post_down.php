@@ -1,6 +1,6 @@
-<?php
+<?php $connect = include(sprintf("%s/fragments/header.html", $_SERVER['DOCUMENT_ROOT'])); ?>
 
-$connect = mysqli_connect("localhost", "root", "7pifz9!!", "loginexam") or die("fail");
+<?php
 $login_user = $_COOKIE['id'];
 header( "Content-type: application/vnd.ms-excel; charset=utf-8");
 header( "Content-Disposition: attachment; filename = excel_test.xls" );     //filename = 저장되는 파일명을 설정합니다.
@@ -9,7 +9,6 @@ header( "Content-Description: PHP4 Generated Data" );
 $sql = "select * from post where nickname='$login_user'";
 $res = mysqli_query($connect,$sql)
 ?>
-<?php include(sprintf("%s/fragments/header.html", $_SERVER['DOCUMENT_ROOT'])); ?>
 <table border="1">
     <tr>
         <th style="background-color: #d1d2d4">Post ID</th>

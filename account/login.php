@@ -1,4 +1,4 @@
-<?php include(sprintf("%s/fragments/header.html", $_SERVER['DOCUMENT_ROOT'])); ?>
+<?php $connect = include(sprintf("%s/fragments/header.html", $_SERVER['DOCUMENT_ROOT'])); ?>
 
 <?php
 //session_start();
@@ -8,7 +8,8 @@
  * 남의영 ( 2022-01-04 )
  * 아이디와 비밀번호를 받을수 있는 페이지
  */
-$connect = mysqli_connect("localhost", "root", "7pifz9!!", "loginexam") or die("fail");
+
+//$connect = mysqli_connect("localhost", "root", "7pifz9!!", "loginexam") or die("fail");
 $id = $_POST['nickname'];
 $pw = $_POST['password'];
 //$email = $_POST['email'];

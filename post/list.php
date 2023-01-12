@@ -1,11 +1,13 @@
+<?php $connect = include(sprintf("%s/fragments/header.html", $_SERVER['DOCUMENT_ROOT'])); ?>
+
 <?php
 header('Content-type: text/html');
 header('Access-Control-Allow-Origin: *');
-include(sprintf("%s/fragments/header.html", $_SERVER['DOCUMENT_ROOT']));
 include(sprintf("%s/fragments/nav.php", $_SERVER['DOCUMENT_ROOT']));
 
+
 $login_user = $_COOKIE['id'];
-$connect = mysqli_connect("localhost", "root", "7pifz9!!", "loginexam") or die("fail");
+//$connect = mysqli_connect("localhost", "root", "7pifz9!!", "loginexam") or die("fail");
 $category = !empty($_GET['category']) ? $_GET['category'] : "";
 $search = !empty($_GET['search']) ? $_GET['search'] : "";
 $where = "";

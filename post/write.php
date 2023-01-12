@@ -1,14 +1,13 @@
+<?php $mysqli = include(sprintf("%s/fragments/header.html", $_SERVER['DOCUMENT_ROOT'])); ?>
+
 <?php
 date_default_timezone_set('Asia/Seoul');
-//$connect = mysqli_connect("localhost", "root", "7pifz9!!", "loginexam") or die("fail");
-
 
 $username = $_COOKIE['id'];
 $title = $_POST['title'];
 $content = $_POST['content'];
 $created = date('Y-m-d H:i:s');
 
-$mysqli = new mysqli("localhost", "root", "7pifz9!!", "loginexam");
 
 $stmt = $mysqli->stmt_init();
 $sql = "insert into post (title, content, created, nickname, idx ) values (?, ?, ? ,?,?)";

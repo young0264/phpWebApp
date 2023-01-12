@@ -14,4 +14,10 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 </head>
-<!--<div class="d-flex justify-content-center">-->
+
+<?php
+$connect = mysqli_connect("localhost", "root", "7pifz9!!", "loginexam") or die("fail");
+//new mysqli("localhost", "root", "7pifz9!!", "loginexam");
+return $connect;
+?>
+

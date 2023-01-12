@@ -1,5 +1,5 @@
 <?php
-$connect = mysqli_connect("localhost", "root", "7pifz9!!", "loginexam") or die("fail");
+$connect = include(sprintf("%s/fragments/dbConnect.php", $_SERVER['DOCUMENT_ROOT']));
 
 $postId = $_GET['postId'];
 $query = "delete from post where id='$postId';";

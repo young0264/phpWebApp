@@ -1,12 +1,12 @@
+<?php $connect = include(sprintf("%s/fragments/header.html", $_SERVER['DOCUMENT_ROOT'])); ?>
+
 <?php
 /**
  * 게시글 리스트
  * 남의영 (2022-01-05)
  * 게시글들을 보여주는 페이지 입니다
  */
-require_once("../fragments/header.html");
 require_once("../fragments/nav.php");
-$connect = mysqli_connect("localhost", "root", "7pifz9!!", "loginexam") or die("fail");
 $postId = $_GET['postId'];
 $query = "select * from post where id=$postId";
 $res = mysqli_query($connect, $query);

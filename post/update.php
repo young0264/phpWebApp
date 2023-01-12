@@ -1,11 +1,10 @@
-<?php include(sprintf("%s/fragments/header.html", $_SERVER['DOCUMENT_ROOT'])); ?>
+<?php $connect = include(sprintf("%s/fragments/header.html", $_SERVER['DOCUMENT_ROOT'])); ?>
 
 <body>
 
 <?php
 include(sprintf("%s/fragments/nav.php", $_SERVER['DOCUMENT_ROOT']));
 $postId = $_GET['postId'];
-$connect = mysqli_connect("localhost", "root", "7pifz9!!", "loginexam") or die("fail");
 $sql = "SELECT * FROM post where id = '$postId'";
 $result = mysqli_query($connect, $sql);
 $post = mysqli_fetch_assoc($result);

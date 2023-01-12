@@ -1,8 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php $connect = include(sprintf("%s/fragments/header.html", $_SERVER['DOCUMENT_ROOT'])); ?>
 
 <?php
-//require_once("../fragments/header.html");
 require_once("../fragments/header.html");
 echo $_SERVER["DOCUMENT_ROOT"];
 echo $_SERVER["REQUEST_URI"];
@@ -26,7 +24,6 @@ echo $_SERVER["REQUEST_URI"];
     </thead>
     <?php
 
-    $connect = mysqli_connect("localhost", "root", "7pifz9!!", "loginexam") or die("fail");
 
     $sql = "SELECT * FROM post";
     $result = mysqli_query($connect, $sql);

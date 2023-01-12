@@ -1,6 +1,6 @@
 <?php
 require_once("../fragments/header.html");
-$connect = mysqli_connect("localhost", "root", "7pifz9!!", "loginexam") or die("fail");
+$connect = include(sprintf("%s/fragments/dbConnect.php", $_SERVER['DOCUMENT_ROOT']));
 $postId = $_POST['postId'];
 $nickname = $_POST['nickname'];
 $content = $_POST['content'];

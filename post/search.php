@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php $connect = include(sprintf("%s/fragments/header.html", $_SERVER['DOCUMENT_ROOT'])); ?>
 
-<?php require_once("../fragments/header.html"); ?>
 
 <body>
 <?php require_once("../fragments/nav.php"); ?>
@@ -49,7 +47,6 @@ search.php 페이지
 
     <div class="pagination">
         <?php
-        $connect = mysqli_connect("localhost", "root", "7pifz9!!", "loginexam") or die("fail");
         //        =====검색 쿼리 ====//
         $category = $_GET['category'];
         $search = $_GET['search'];

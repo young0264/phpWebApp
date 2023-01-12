@@ -1,10 +1,12 @@
+<?php $mysqli = include(sprintf("%s/fragments/header.html", $_SERVER['DOCUMENT_ROOT'])); ?>
+
 <?php
+
 $nickname = $_POST['nickname'];
 $password = $_POST['password'];
 $email = $_POST ['email'];
 $intro = $_POST ['intro'];
 
-$mysqli = new mysqli("localhost", "root", "7pifz9!!", "loginexam");
 
 $is_member = "select * from member where $nickname=nickname";
 $res = mysqli_query($mysqli, $is_member);
