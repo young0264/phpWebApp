@@ -10,9 +10,9 @@ $content=$_POST['content'];
 echo "<h2>$postId, $username, $password, $title, $content</h2>";
 //$sql = "update post set title='".$title."',content='".$content."' where id='".$postId."'"
 
-$query = "update post set title='".$title."' , content='".$content."' where id=$postId";
+$post_query = "update post set title='".$title."', content='".$content."' where id=$postId";
 
-mysqli_query($connect, $query);
+mysqli_query($connect, $post_query);
 mysqli_close($connect);
 ?>
 

@@ -1,4 +1,4 @@
 ./css*
-./css/*
+static/css/*
 .idea/dataSources.xml
 
