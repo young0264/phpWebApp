@@ -1,3 +1,5 @@
+<?php include(sprintf("%s/fragments/header.html", $_SERVER['DOCUMENT_ROOT'])); ?>
+
 <?php
 //session_start();
 
@@ -11,7 +13,6 @@ $id = $_POST['nickname'];
 $pw = $_POST['password'];
 //$email = $_POST['email'];
 $query = "select * from member where nickname='$id'";
-
 $result = $connect->query($query);
 if (!mysqli_num_rows($result)) {
     $query = "select * from member where email='$id'";
@@ -20,39 +21,27 @@ if (!mysqli_num_rows($result)) {
 if (mysqli_num_rows($result) == 1) {
     $row = mysqli_fetch_assoc($result);
     if ($row['password'] == $pw) {
-//        $_SESSION['userid'] = $id;
-//        $_SESSION['userpw'] = $pw;
-//        $_SESSION['useremail'] = $email;
-//        setcookie('id', $id,['samesite' => 'None', 'secure' => true]);
-//        setcookie('pw', $pw,['samesite' => 'None', 'secure' => true]);
-        setcookie('id', $id,time() + 3600);
-        setcookie('pw', $pw,time() + 3600);
+        setcookie('id', $id, time() + 3600, "/");
+        setcookie('pw', $pw, time() + 3600, "/");
 
-        if (isset($_COOKIE['id'])) {
-            ?>
+        if (isset($id)) { ?>
             <script>
-
                 alert("로그인 되었습니다.");
                 location.replace("../main/mainpage.html");
             </script>
-            <?php
+        <?php
         } else {
-            echo "session fail";
-        }
-    } else {
-        ?>
+            echo "session fail";}
+    } else { ?>
         <script>
             alert("아이디 혹은 비밀번호가 잘못되었습니다.");
             history.back();
         </script>
-        <?php
-    }
+        <?php }
 } else {
     ?>
     <script>
         alert("아이디 혹은 비밀번호가 잘못되었습니다.");
         history.back();
     </script>
-    <?php
-}
-?>
+    <?php } ?>
