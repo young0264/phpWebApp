@@ -1,21 +1,24 @@
 <?php
-
-$connect = mysqli_connect("localhost", "root", "7pifz9!!", "loginexam") or die("fail");
-
 $nickname = $_POST['nickname'];
 $password = $_POST['password'];
 $email = $_POST ['email'];
 $intro = $_POST ['intro'];
 
-//입력받은 데이터를 DB에 저장
-$query = "insert into member (nickname, password, email, intro) values ('$nickname', '$password', '$email', '$intro')";
-$result = mysqli_query($connect, $query);
-print_r($result);
+$mysqli = new mysqli("localhost", "root", "7pifz9!!", "loginexam");
 
-echo "<h2>result : $result</h2>";
+$is_member = "select * from member where $nickname=nickname";
+$res = mysqli_query($mysqli, $is_member);
+$row = mysqli_fetch_array($res);
 
-//저장이 됬다면 (result = true) 가입 완료
-if ($result) {
+$stmt = $mysqli->stmt_init();
+$sql = "insert into member (nickname, password, email, intro) values (?, ?, ?, ?)";
+$stmt->prepare($sql);
+$stmt->bind_param( "ssss",$nickname,$password, $email, $intro);
+$stmt->execute();
+
+//print_r($stmt);
+
+if (!$row) {
     ?>
     <script>
         alert('가입 되었습니다.');
@@ -24,9 +27,8 @@ if ($result) {
 <?php } else {
     ?>
     <script>
-        alert("fail");
+        alert("이미 가입되어 있는 회원입니다.");
     </script>
 <?php }
 
-mysqli_close($connect);
 ?>
