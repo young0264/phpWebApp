@@ -8,6 +8,19 @@ $password = $_COOKIE['pw'];
 $title=$_POST['title'];
 $content=$_POST['content'];
 
+if (isset($_FILES['SelectFiles']['name'])) {
+    $cnt = count( $_FILES['SelectFiles']['name']);
+    for ($i = 0; $i < $cnt; $i++) {
+        $file_name = $_FILES['SelectFiles']['name'][$i];
+        $path = "../upload/".$file_name;
+        $file = $_FILES['SelectFiles']['tmp_name'][$i];
+        move_uploaded_file($file, $path);
+        $query2 = "insert into file (idx, name, path) values ('$postId', '$file_name', '$path')";
+        mysqli_query($connect, $query2);
+    }
+}
+
+
 echo "<h2>$postId, $username, $password, $title, $content</h2>";
 //$sql = "update post set title='".$title."',content='".$content."' where id='".$postId."'"
 

@@ -1,7 +1,30 @@
 <?php $connect = include(sprintf("%s/fragments/header.html", $_SERVER['DOCUMENT_ROOT'])); ?>
 
-<body>
+<script>
+    function test() {
+        alert("test 알람")
+    }
 
+    function file_delete(file_name) {
+          var data = {
+            file_name: file_name
+        }
+        $.ajax({
+            async: false,
+            type: 'post',
+            url: '../file/delete.php',
+            data: data,
+            dataType: 'json',
+            error: function () {
+            },
+            success: function (result) {
+                alert(file_name);
+            },
+        })
+    }
+</script>
+
+<body>
 <?php
 include(sprintf("%s/fragments/nav.php", $_SERVER['DOCUMENT_ROOT']));
 $postId = $_GET['postId'];
@@ -10,9 +33,8 @@ $result = mysqli_query($connect, $sql);
 $post = mysqli_fetch_assoc($result);
 ?>
 
-
 <div class="forum-topic-add" style="background-color: aliceblue">
-    <div class="my-4"  style="background-color: aliceblue">
+    <div class="my-4" style="background-color: aliceblue">
         <div style="margin-left: 200px; ">
             <div class="col-md-8 col-md-offset-2">
                 <h1>Create post</h1>
@@ -23,11 +45,13 @@ $post = mysqli_fetch_assoc($result);
                     <div class="form-floating mb-3">
                         <h8>제목</h8>
 
-                        <input type="text" style="background-color:cornflowerblue" class="form-control" name="title" value="<?php echo $post['title']; ?>"required>
+                        <input type="text" style="background-color:cornflowerblue" class="form-control" name="title"
+                               value="<?php echo $post['title']; ?>" required>
                     </div>
                     <div class="form-group">
                         <h8>내용</h8>
-                        <textarea rows="5" style="background-color:cornflowerblue" class="form-control" name="content"  required><?php echo $post['content']; ?></textarea>
+                        <textarea rows="5" style="background-color:cornflowerblue" class="form-control" name="content"
+                                  required><?php echo $post['content']; ?></textarea>
                     </div>
                     <div class="form-group">
                         <h8>첨부파일</h8>
@@ -40,16 +64,18 @@ $post = mysqli_fetch_assoc($result);
                                         order by id";
                             $res3 = mysqli_query($connect, $sql3);
                             while ($row2 = mysqli_fetch_array($res3)) {
-                                $file = $row2['name']; ?>
-
+                                $file = $row2['name'];
+                                ?>
                                 <a href="../upload/<?= $file ?>" download style="color: darkblue"><?= $file ?></a>
+                                <button type="button" class ="btn btn-warning" onclick="file_delete('<?php echo $file ?>')">파일삭제</button>
                             <?php } ?></div>
                     </div>
+
                     <div class="d-grid gap-2 d-md-block">
-                        <button type="submit" class="btn btn-primary" >
+                        <button type="submit" class="btn btn-primary">
                             작성
                         </button>
-                        <a class="btn btn-default" href="./list.php" >
+                        <a class="btn btn-default" href="./list.php">
                             취소
                         </a>
                     </div>
@@ -58,5 +84,6 @@ $post = mysqli_fetch_assoc($result);
         </div>
     </div>
 </div>
+
 </body>
 </html>
