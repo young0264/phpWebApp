@@ -4,7 +4,7 @@
 $login_user = $_COOKIE['id'];
 header( "Content-type: application/vnd.ms-excel; charset=utf-8");
 header( "Content-Disposition: attachment; filename = excel_test.xls" );     //filename = 저장되는 파일명을 설정합니다.
-header( "Content-Description: PHP4 Generated Data" );
+header( "Content-Description: PHP7 Generated Data" );
 
 $sql = "select * from post where nickname='$login_user'";
 $res = mysqli_query($connect,$sql)
