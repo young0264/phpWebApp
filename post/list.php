@@ -86,22 +86,21 @@ $res2 = mysqli_query($connect, $sql2);
                     <tr>
                         <td><?= $row['id'] ?></td>
                         <td><a href="../post/detail.php?postId=<?= $row['id'] ?>"
-                               style="color: darkblue"><?= $row['title'], "(", $comment_cnt, ")" ?></a>
+                               style="color: darkblue"><?= $row['title'], "(", $comment_cnt, ")" ?></a>w
                         </td>
                         <td><?= $row['content'] ?></td>
                         <td><?php echo $row['nickname']; ?></td>
                         <td><?php echo $row['created']; ?></td>
                         <!--                    onclick을 통한 삭제와 form submit을 통한 삭제 -->
                         <td>
-
                             <?php if ($row['nickname']==$login_user) { ?>
                                 <button class="btn btn-outline-dark" type="button" onclick="post_modify('<?=$postId?>')">수정</button>
                             <?php } ?>
                         </td>
                         <td>
-                            <button class="btn btn-outline-dark" type="button" onclick="delete_id('<?= $postId ?>')">
-                                삭제
-                            </button>
+                            <?php if ($row['nickname']==$login_user) { ?>
+                                <button class="btn btn-outline-dark" type="button" onclick="delete_id('<?= $postId ?>')">삭제</button>
+                            <?php } ?>
                         </td>
                         <td>
                             <?php
@@ -112,7 +111,7 @@ $res2 = mysqli_query($connect, $sql2);
                             while ($row2 = mysqli_fetch_array($res3)) {
                                 $file = $row2['name']; ?>
                                 <a href="../upload/<?= $file ?>" download style="color: darkblue"><?= $file ?></a>
-                            <?php } ?>
+.                            <?php } ?>
                         </td>
                     </tr>
                 <?php } ?>
