@@ -10,7 +10,7 @@
     <div style="margin-left: 200px; background-color: #2b2b2b">
         <nav class="navbar navbar-expand-sm">
             <a class="navbar-brand" href="../post/list.php">
-                <img src="../images/logo.png" width="100" height="60">
+                <img src="../static/images/logo.png" width="100" height="60">
             </a>
             <ul class="nav">
                 <li class="nav-item"><a class="nav-link scrollto active" href="../main/mainpage.html">Main</a></li>
