@@ -29,12 +29,22 @@ $file_result = mysqli_query($connect, $file_sql);
                     <div class="body">
                         <div class="img-post">
                             <h3>작성자 : <?= $post['nickname'] ?></h3>
-                            <img class="d-block img-fluid" src="../images/bg-image.jpeg" alt="First slide">
+                            <img class="d-block img-fluid" src="../static/images/bg-image.jpeg" alt="First slide">
                         </div>
                         <h1><?= $post['title'] ?></h1>
                         <p><?= $post['content'] ?></p>
                     </div>
                 </div>
+                    <div class="card">
+                        <div class="header">
+                            <h3>첨부파일</h3>
+                            <?php
+                            while ($row = mysqli_fetch_array($file_result)) {
+                                ?>
+                                <a href="../upload/<?= $row['name'] ?>" download><?= $row['name'] ?></a>
+                            <?php } ?>
+                        </div>
+                    </div>
                 <div class="card">
                     <div class="header">
                         <h2>댓글 <?=$comment_cnt?></h2>
