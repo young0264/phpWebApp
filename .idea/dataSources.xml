@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-    <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-        <data-source source="LOCAL" name="loginexam@localhost" uuid="d295173a-49ef-478e-adeb-296e2fce85bf">
-            <driver-ref>mysql.8</driver-ref>
-            <synchronize>true</synchronize>
-            <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-            <jdbc-url>jdbc:mysql://localhost:3306/loginexam</jdbc-url>
-            <working-dir>$ProjectFileDir$</working-dir>
-        </data-source>
-    </component>
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="loginexam@localhost" uuid="d295173a-49ef-478e-adeb-296e2fce85bf">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/loginexam</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="Oracle" uuid="1d1a5dd1-e29d-4114-a879-eead2c507e46">
+      <driver-ref>oracle.19</driver-ref>
+      <synchronize>true</synchronize>
+      <auto-commit>false</auto-commit>
+      <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
+      <jdbc-url>jdbc:oracle:thin:@ 222.122.131.184:1521:orcl</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+  </component>
 </project>

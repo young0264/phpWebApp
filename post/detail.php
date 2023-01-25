@@ -1,4 +1,3 @@
-<?php $connect = include(sprintf("%s/fragments/header.html", $_SERVER['DOCUMENT_ROOT'])); ?>
 
 <?php
 /**
@@ -6,7 +5,8 @@
  * 남의영 (2022-01-05)
  * 게시글들을 보여주는 페이지 입니다
  */
-require_once("../fragments/nav.php");
+include sprintf("%s/fragments/header.html", $_SERVER['DOCUMENT_ROOT']);
+include sprintf("%s/fragments/nav.php", $_SERVER['DOCUMENT_ROOT']);
 $postId = $_GET['postId'];
 $query = "select * from post where id=$postId";
 $res = mysqli_query($connect, $query);

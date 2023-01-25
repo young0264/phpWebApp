@@ -1,6 +1,6 @@
-
 <?php
-$connect = include(sprintf("%s/fragments/header.html", $_SERVER['DOCUMENT_ROOT']));
+include sprintf("%s/fragments/header.html", $_SERVER['DOCUMENT_ROOT']);
+
 $nickname = $_COOKIE['id'];
 $flag = $_POST['flag'];
 
@@ -14,7 +14,6 @@ $intro = $_POST['intro'];
 $old_password = $_POST['old_password'];
 $new_password = $_POST['new_password'];
 $confirm_new_password = $_POST['confirm_new_password'];
-
 
 $update_sql = "update member set 
                         email='" . $email . "', 

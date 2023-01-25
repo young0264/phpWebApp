@@ -1,4 +1,4 @@
-<?php $connect = include(sprintf("%s/fragments/header.html", $_SERVER['DOCUMENT_ROOT'])); ?>
+<?php include(sprintf("%s/fragments/header.html", $_SERVER['DOCUMENT_ROOT'])); ?>
 
 <script>
     function test() {
@@ -18,7 +18,8 @@
             error: function () {
             },
             success: function (result) {
-                alert(file_name);
+                console.log()
+                alert("ajax 통신 성공 :" + file_name);
             },
         })
     }

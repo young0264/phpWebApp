@@ -1,3 +1,7 @@
+<?php
+    header('Content-type: text/html');
+    header('Access-Control-Allow-Origin: *');
+?>
 <!DOCTYPE html>
 <html lang="UTF-8">
 <head>
@@ -16,8 +20,9 @@
 </head>
 
 <?php
-$connect = mysqli_connect("localhost", "root", "7pifz9!!", "loginexam") or die("fail");
-//new mysqli("localhost", "root", "7pifz9!!", "loginexam");
-return $connect;
+include_once sprintf("%s/%s", $_SERVER['DOCUMENT_ROOT'], "fragments/dbConnect.php");
+//$connect = mysqli_connect("localhost", "root", "7pifz9!!", "loginexam") or die("fail");
+////new mysqli("localhost", "root", "7pifz9!!", "loginexam");
+//return $connect;
 ?>
 

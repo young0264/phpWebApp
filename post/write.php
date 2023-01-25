@@ -1,4 +1,4 @@
-<?php $mysqli = include(sprintf("%s/fragments/header.html", $_SERVER['DOCUMENT_ROOT'])); ?>
+<?php include sprintf("%s/fragments/header.html", $_SERVER['DOCUMENT_ROOT']); ?>
 
 <?php
 date_default_timezone_set('Asia/Seoul');
@@ -9,7 +9,7 @@ $content = $_POST['content'];
 $created = date('Y-m-d H:i:s');
 
 
-$stmt = $mysqli->stmt_init();
+$stmt = $connect->stmt_init();
 $sql = "insert into post (title, content, created, nickname, idx ) values (?, ?, ? ,?,?)";
 $zero = 0;
 $stmt->prepare($sql);

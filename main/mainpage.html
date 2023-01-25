@@ -1,5 +1,5 @@
-<?php include(sprintf("%s/fragments/header.html", $_SERVER['DOCUMENT_ROOT'])); ?>
-<?php include(sprintf("%s/fragments/nav.php", $_SERVER['DOCUMENT_ROOT'])); ?>
+<?php include sprintf("%s/fragments/header.html", $_SERVER['DOCUMENT_ROOT']); ?>
+<?php include sprintf("%s/fragments/nav.php", $_SERVER['DOCUMENT_ROOT']); ?>
 
 <body class="container"style="background-color: aliceblue" >
 
@@ -23,6 +23,23 @@
                 <p class="description">PHP 게시판</p>
             </div>
         </div>
+        <?php
+        $f_songs = [];
+        $f_songs[12312312] = 0;
+        $f_songs[222222] = 0;
+        $f_songs[333333] = 1;
+        $f_songs[444444] = 0;
+//        echo $f_songs[22222];
+//        echo $f_songs[222222];
+//        echo 123213;
+        echo array_key_exists(222222, $f_songs);
+//        echo isset($search_array['222222']);
+//        echo isset($search_array['first']);
+
+        exit;
+
+
+        ?>
 
         <div class="col-lg-4 background order-lg-2"  >
             <img src="../static/images/mountain.jpg" width="150%">

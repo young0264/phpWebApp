@@ -1,24 +1,15 @@
 <?php
-$connect = include(sprintf("%s/fragments/dbConnect.php", $_SERVER['DOCUMENT_ROOT']));
+    include sprintf("%s/fragments/dbConnect.php", $_SERVER['DOCUMENT_ROOT']);
+    function alert($str) {
+        echo "<script>alert('".$str."'); location.href='/untitled/post/list.php'; </script>";
+        exit;
+    }
 
-$postId = $_GET['postId'];
-$query = "delete from post where id='$postId';";
+    $postId = $_GET['postId'];
+    $query = "delete from post where id='$postId'";
+    if (!mysqli_query($connect, $query)) {
+        alert("값이 삭제되지 않았습니다");
+    }
 
-mysqli_query($connect, $query);
-
-$query = "select from post where id='$postId';";
-
-if (mysqli_query($connect, $query)) {
-    echo "<h2>값이 삭제되지 않았습니다</h2>";?>
-<?php
-}else{
-    ?>
-    <script type="text/javascript">
-        const postNum = "<?=$postId?>";
-        alert(postNum + "번째 게시글이 삭제되었습니다.");
-        location.replace("/untitled/post/list.php");
-    </script>
-<?php
-}
-mysqli_close($connect);
+    alert(sprintf("%d 번째 값이 삭제되었습니다.", $postId));
 ?>
