@@ -1,50 +1,49 @@
 <?php include sprintf("%s/fragments/header.html", $_SERVER['DOCUMENT_ROOT']); ?>
 <?php include sprintf("%s/fragments/nav.php", $_SERVER['DOCUMENT_ROOT']); ?>
 
-<body class="container"style="background-color: aliceblue" >
+<body class="container" style="background-color: aliceblue">
 
 <div class="container" style="background-color: aliceblue">
-    <div class="row about-container">
-
-        <div class="col-lg-6 content order-lg-1 order-2">
-            <h2 class="title">PHP </h2>
-            <h5>
-                PHP
-            </h5>
-
-            <div class="icon-box" data-aos-delay="200">
-                <div class="icon"><i class="bi bi-card-checklist"></i></div>
-                <h4 class="title"><a>PHP 게시판</a></h4>
-                <p class="description">PHP 게시판</p>
-            </div>
-            <div class="icon-box" data-aos-delay="200">
-                <div class="icon"><i class="bi bi-card-checklist"></i></div>
-                <h4 class="title"><a>PHP 게시판</a></h4>
-                <p class="description">PHP 게시판</p>
-            </div>
+    <div class="container">
+        <div class="icon-box" data-aos-delay="200">
+            <div class="icon"><i class="bi bi-card-checklist"></i></div>
+            <h4 class="title" style="text-align:center"><a>PHP 게시판</a></h4>
+            <p class="description" style="text-align:center">PHP 게시판 <mark>메인페이지</mark>입니다.</p>
         </div>
-        <?php
-        $f_songs = [];
-        $f_songs[12312312] = 0;
-        $f_songs[222222] = 0;
-        $f_songs[333333] = 1;
-        $f_songs[444444] = 0;
-//        echo $f_songs[22222];
-//        echo $f_songs[222222];
-//        echo 123213;
-        echo array_key_exists(222222, $f_songs);
-//        echo isset($search_array['222222']);
-//        echo isset($search_array['first']);
 
-        exit;
-
-
-        ?>
-
-        <div class="col-lg-4 background order-lg-2"  >
-            <img src="../static/images/mountain.jpg" width="150%">
+        <div class="row">
+            <div class="col-lg-4 content order-lg-1 order-2">
+                <h2 class="title">공지사항 </h2>
+                <h5>PHP
+                </h5>
+            </div>
+            <div class="col-lg-4 content order-lg-1 order-2">
+                <h2> PHP </h2>
+                <h4 class="title"><a>PHP 게시판</a></h4>
+            </div>
+            <div class="col-lg-4 content order-lg-1 order-2">
+<!--                <img src="../static/images/mountain/mountain02.png" width="100%" height="100%">-->
+                <video  width="100%" height="100%" controls>
+                    <source src="../static/video/mountain_video01.mp4" type="video/mp4">
+                </video>
+            </div>
         </div>
     </div>
+    <div class="container">
+
+    <div class="row">
+        <div class="col-lg-4 background order-lg-2">
+            <img src="../static/images/mountain/mountain.jpg" width="100%" height="100%">
+        </div>
+        <div class="col-lg-4 background order-lg-2">
+            <img src="../static/images/mountain/mountain03.png" width="100%" height="100%">
+        </div>
+        <div class="col-lg-4 background order-lg-2">
+            <img src="../static/images/mountain/mountain04.png" width="100%" height="100%">
+        </div>
+    </div>
+
+</div>
 </div>
 
 </body>
